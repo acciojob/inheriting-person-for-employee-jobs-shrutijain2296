@@ -4,7 +4,7 @@ function Person(name, age) {
 	this.age = age;
 }
 Person.prototype.greet = function(){
-	console.log("Hello, my name is " + this.name, "I am " + this.age + " years old");
+	console.log("Hello, my name is " + this.name + ", I am " + this.age + " years old");
 }
 console.log(Person)
 
@@ -13,9 +13,16 @@ function Employee(name, age, jobTitle) {
 	this.jobTitle = jobTitle;
 }
 Employee.prototype.jobGreet = function(){
-	console.log("Hello, my name is " + this.name, "I am " + this.age + " years old, and my job title " + this.jobTitle + ".")
+	console.log("Hello, my name is " + this.name +  ", I am " + this.age + " years old, and my job title " + this.jobTitle + ".")
 }
 Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = function Employee(name, age, jobTitle) {
+	Person.call(this, name, age);
+	this.jobTitle = jobTitle;
+}
+Employee.prototype.jobGreet = function(){
+	console.log("Hello, my name is " + this.name +  ", I am " + this.age + " years old, and my job title " + this.jobTitle + ".")
+}
 
 // Do not change code below this line
 window.Person = Person;
