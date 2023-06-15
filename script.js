@@ -28,29 +28,29 @@ function Person(name, age) {
 	this.name = name;
 	this.age = age;
 }
-Personerson.prototype.greet = function(){
+Person.prototype.greet = function(){
 	console.log("Hello, my name is " + this.name + " and I am " + this.age + " years old.");
 }
-sjDetails = new Personerson('shruti', 26);
+sjDetails = new Person('shruti', 26);
 console.log(sjDetails.greet());
 // console.log(person)
 
 function Employee(name, age, jobTitle) {
-	Personerson.call(this, name, age);
-	this.jobTitle = jobTitle;
-}
-Eployee.prototype.jobGreet = function(){
-	console.log("Hello, my name is " + this.name + " I am " + this.age + " years old, and my job title is " + this.jobTitle + ".");
-}
-Employee.prototype = Object.create(Personerson.prototype);
-Employeemployee.prototype.constructor = function Employee(name, age, jobTitle) {
 	Person.call(this, name, age);
 	this.jobTitle = jobTitle;
 }
-Employeeployee.prototype.jobGreet = function(){
+Employee.prototype.jobGreet = function(){
+	console.log("Hello, my name is " + this.name + " I am " + this.age + " years old, and my job title is " + this.jobTitle + ".");
+}
+Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = function Employee(name, age, jobTitle) {
+	Person.call(this, name, age);
+	this.jobTitle = jobTitle;
+}
+Employee.prototype.jobGreet = function(){
 	console.log("Hello, my name is " + this.name +  ", I am " + this.age + " years old, and my job title is " + this.jobTitle + ".")
 }
-pcDetails = new Employeemployee('pc', 23, 'engineer')
+pcDetails = new Employee('pc', 23, 'engineer')
 console.log(pcDetails.jobGreet());
 
 // Do not change code below this line
